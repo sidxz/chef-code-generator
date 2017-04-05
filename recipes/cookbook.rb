@@ -133,3 +133,22 @@ if context.enable_delivery
   include_recipe "::build_cookbook"
 
 end
+
+
+#@######################################################@#
+# Customization 
+# Author sid@tamu.edu
+#@######################################################@#
+
+# Server Side Inspec Tests
+# Generate Dir Structure
+directory "#{cookbook_dir}/templates/default/inspec-tests/" do
+  recursive true
+end
+
+# Generate File
+template "#{cookbook_dir}/templates/default/inspec-tests/default_inspec.erb" do
+  source "inspec_server_test.erb.erb"
+  helpers(ChefDK::Generator::TemplateHelper)
+  action :create_if_missing
+end
