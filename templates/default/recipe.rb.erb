@@ -1,5 +1,19 @@
-#
 # Cookbook:: <%= cookbook_name %>
 # Recipe:: <%= recipe_name %>
 #
 <%= license_description('#') %>
+
+# Generate InSpec Test Files
+# These tests are used in the chef automate delivery pipeline.
+# Create test dir
+directory "/opt/coe/.cheftests/<%= cookbook_name %>" do
+  recursive true
+end
+# Create test file
+template "/opt/coe/.cheftests/<%= cookbook_name %>/<%= recipe_name %>.rb" do
+  source "inspec-tests/<%= recipe_name %>_inspec.erb"
+  owoner 'root'
+  group 'root'
+  mode '755'
+end
+# <----------  Start writing recipe from here -------> 
