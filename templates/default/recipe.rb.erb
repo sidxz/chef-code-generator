@@ -6,13 +6,13 @@
 # Generate InSpec Test Files
 # These tests are used in the chef automate delivery pipeline.
 # Create test dir
-directory "/opt/coe/.cheftests/<%= cookbook_name %>" do
+directory "/opt/coe/inspec-tests/<%= cookbook_name %>" do
   recursive true
 end
 # Create test file
-template "/opt/coe/.cheftests/<%= cookbook_name %>/<%= recipe_name %>.rb" do
+template "/opt/coe/inspec-tests/<%= cookbook_name %>/<%= recipe_name %>.rb" do
   source "inspec-tests/<%= recipe_name %>_inspec.erb"
-  owoner 'root'
+  owner 'root'
   group 'root'
   mode '755'
 end
