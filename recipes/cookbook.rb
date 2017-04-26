@@ -152,3 +152,18 @@ template "#{cookbook_dir}/templates/default/inspec-tests/default_inspec.erb" do
   helpers(ChefDK::Generator::TemplateHelper)
   action :create_if_missing
 end
+
+log 'welcome' do
+  message "
+
+  ---------------------------------------------------------------------------------
+  CREATED USING COE GENERATOR COOKBOOK
+  ---------------------------------------------------------------------------------
+  INSPEC test will be placed at templates/default/inspec-tests/
+  To learn more about writing inspec test visit http://inspec.io/docs/
+  This cookbook is intended to be used with inspec_handler
+  Happy Chefifying!
+  ---------------------------------------------------------------------------------
+  "
+  level :warn
+end
